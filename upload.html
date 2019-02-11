@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Upload</title>
+</head>
+<body>
+<h1>File Uploader</h1>
+<form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+<input type="file" name="file" accept=".png,.jpg,.jpeg">
+<input type="submit" value="Upload">
+</form>
+<br/>
+<form id="property-form" action="{{ url_for('properties') }}" method="GET">
+<label>
+{% if filename %}
+<input type="hidden" name="filename" value={{ filename }}>
+{% else %}
+<input type="hidden" name="filename" value="None">
+{% endif %}
+</label>
+<input type="submit" value="properties">
+</form>
+<br/>
+<form id="delete-form" action="{{ url_for('delete') }}" method="GET">
+{% if filename %}
+<input type="hidden" name="filename" value={{ filename }}>
+{% else %}
+<input type="hidden" name="filename" value="None">
+{% endif %}
+<input type="submit" value="delete">
+</form>
+<br/>
+<div>
+     {%if msg %}
+     <div style="margine-top:15px;">
+     <center> {{ msg }} </center>
+         </div>
+         {% endif %}
+</div>
+<div>
+     {%if msg1%}
+     <div style="margine-top:15px;">
+     <center> {{ msg }} </center>
+         </div>
+         {% endif %}
+</div>
+<div>
+     {%if msg1%}
+     <div style="margine-top:15px;">
+     <center> {{ msg1}} </center>
+         </div>
+         {% endif %}
+</div>
+<div>
+     {%if msg2%}
+     <div style="margine-top:15px;">
+     <center> {{ msg2}} </center>
+         </div>
+         {% endif %}
+</div>
+<div>
+     {%if msg3%}
+     <div style="margine-top:15px;">
+     <center> {{ msg3}} </center>
+         </div>
+         {% endif %}
+</div>
+<div>
+     {%if msg4%}
+     <div style="margine-top:15px;">
+     <center> {{ msg4}} </center>
+         </div>
+         {% endif %}
+</div>
+<div>
+     {%if msg5 %}
+     <div style="margine-top:15px;">
+     <center> {{ msg5 }} </center>
+      </div>
+     {% endif %}
+</div>
+<br/>
+<br/>
+{% if filename %}
+<a href="{{ url_for('retrieve',filename=filename) }}">{{ filename }}</a>
+{% endif %}
+</body>
+</html>
+                                                         
